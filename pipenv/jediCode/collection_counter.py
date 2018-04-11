@@ -21,6 +21,11 @@ jedis = [
 ]
 
 frequencies = collections.Counter(jedi['lightsaber_color'] for jedi in jedis)
+i = collections.Counter(len(jedi['name']) < 10 for jedi in jedis)
+j = collections.Counter(jedi['name'][0] == 'A' for jedi in jedis)
 
+print(jedi)
 print(frequencies)
+print(i)
+print(j)
 # Counter({'blue': 6, 'green': 6, 'red': 5})
