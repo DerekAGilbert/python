@@ -1,5 +1,4 @@
 
-
 def manual_increment_matrix(n):
     matrix = [ [ None for y in range(n) ] for x in range(n) ]
 
