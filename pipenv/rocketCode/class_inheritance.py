@@ -1,4 +1,5 @@
 from math import sqrt
+from random import randint
 
 class Rocket():
     # Rocket simulates a rocket ship for a game,
@@ -17,11 +18,40 @@ class Rocket():
         distance = sqrt((self.x-other_rocket.x)**2+(self.y-other_rocket.y)**2)
         return distance
 
-falcon9_1 = Rocket()
-falcon9_2 = Rocket(10, 10)
+class Shuttle(Rocket):
+    def __init__(self, x=0, y=0, flights_completed=0):
+        super().__init__(x, y)
+        self.flights_completed = flights_completed
 
-distance = falcon9_1.get_distance(falcon9_2)
+
+shuttles = []
+for x in range(0,3):
+    x = randint(0,100)
+    y = randint(1,100)
+    flights_completed = randint(0, 15)
+    shuttles.append(Shuttle(x, y, flights_completed))
+
+rockets = []
+for x in range(0,3):
+    x = randint(0,100)
+    y = randint(1,100)
+    rockets.append(Rocket(x, y))
+
+for index, shuttle in enumerate(shuttles):
+    print(f'Shuttle {index} has completed {shuttle.flights_completed} flights.')
+
+first_shuttle = shuttles[0]
+for index, shuttle in enumerate(shuttles):
+    distance = first_shuttle.get_distance(shuttle)
+    print(f'The first shuttle is {distance} units away from shuttle {index}.')
 
 
+
+
+
+
+# falcon9_1 = Rocket()
+# falcon9_2 = Rocket(10, 10)
+# distance = falcon9_1.get_distance(falcon9_2)
 # for index, falcon_heavy in enumerate(spacex_rockets):
-print(f'falcon9_1 is {distance} units away from falcon9_2')
+# print(f'falcon9_1 is {distance} units away from falcon9_2')
